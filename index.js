@@ -17,7 +17,7 @@ server.use(morgan('default'));
 // Connecting to the Database
 
 
-const uri = 'mongodb+srv://harshchaturvedi2109:Harsh2109@samplecluster.iokns2i.mongodb.net/YourDatabaseName?retryWrites=true&w=majority&appName=SampleCluster';
+const uri = process.env.URI;
 
 const options = {
   useNewUrlParser: true,
@@ -26,13 +26,7 @@ const options = {
   socketTimeoutMS: 100000, // Increase the operation timeout to 50 seconds
   connectTimeoutMS: 100000, // Increase the connection timeout to 50 seconds
   serverSelectionTimeoutMS: 30000,
-  bufferCommands: true, // Enable command buffering
-  bufferTimeoutMS: 50000,
 };
-
-// mongoose.connect(uri, options)
-//   .then(() => console.log('MongoDB Atlas Connected'))
-//   .catch(err => console.log(err));
 main().catch(err => console.log("Error", err));
 
 
