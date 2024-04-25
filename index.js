@@ -15,12 +15,34 @@ server.use(express.static('public'));
 server.use(cors());
 server.use(morgan('default'));
 // Connecting to the Database
-main().catch(err => console.log(err));
 
+
+const uri = 'mongodb+srv://harshchaturvedi2109:Harsh2109@samplecluster.iokns2i.mongodb.net/YourDatabaseName?retryWrites=true&w=majority&appName=SampleCluster';
+
+const options = {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  maxPoolSize: 20, // Increase the connection pool size
+  socketTimeoutMS: 50000, // Increase the operation timeout to 30 seconds
+  connectTimeoutMS: 50000, // Increase the connection timeout to 30 seconds
+};
+
+mongoose.connect(uri, options)
+  .then(() => console.log('MongoDB Atlas Connected'))
+  .catch(err => console.log(err));
+// main().catch(err => console.log(err));
+
+
+// async function main() {
+//   await mongoose.connect("mongodb+srv://harshchaturvedi2109:Harsh2109@samplecluster.iokns2i.mongodb.net/YourDatabaseName?retryWrites=true&w=majority&appName=SampleCluster");
+//   console.log("Connected to the database");
+// }
+/*
 async function main() {
-  await mongoose.connect("mongodb+srv://harshchaturvedi2109:Harsh2109@samplecluster.iokns2i.mongodb.net/YourDatabaseName?retryWrites=true&w=majority&appName=SampleCluster");
+  await mongoose.connect('mongodb://127.0.0.1:27017/ecommerce');
   console.log("Connected to the database");
 }
+*/
 
 server.use('/login',loginRouter.router);
 server.use('/product',productRouter.router);

@@ -35,6 +35,7 @@ exports.login = async(req,res)=>{
        
     }
     catch(err){
+        console.log(err);
         const message = "Couldnt Send Data "
         res.status(401).json({err,message})
     }
