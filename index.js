@@ -18,7 +18,7 @@ server.use(morgan('default'));
 main().catch(err => console.log(err));
 
 async function main() {
-  await mongoose.connect('mongodb://127.0.0.1:27017/ecommerce');
+  await mongoose.connect("mongodb+srv://harshchaturvedi2109:Harsh2109@samplecluster.iokns2i.mongodb.net/YourDatabaseName?retryWrites=true&w=majority&appName=SampleCluster");
   console.log("Connected to the database");
 }
 
