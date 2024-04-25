@@ -16,22 +16,10 @@ server.use(cors());
 server.use(morgan('default'));
 // Connecting to the Database
 
-
-const uri = process.env.URI;
-
-const options = {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  maxPoolSize: 20, // Increase the connection pool size
-  socketTimeoutMS: 100000, // Increase the operation timeout to 50 seconds
-  connectTimeoutMS: 100000, // Increase the connection timeout to 50 seconds
-  serverSelectionTimeoutMS: 30000,
-};
 main().catch(err => console.log("Error", err));
 
-
 async function main() {
-  await mongoose.connect(uri,options);
+  await mongoose.connect("mongodb+srv://harshchaturvedi2109:Harsh2109@samplecluster.iokns2i.mongodb.net/YourDatabaseName?retryWrites=true&w=majority&appName=SampleCluster");
   console.log("Connected to the database");
 }
 /*
