@@ -44,7 +44,7 @@ exports.getAllUsers = async (req, res) => {
     
     
     // Fetch the course details based on the courseCodes stored in the user document
-    if (user.userRole === "admin") {
+    if (user.userRole.toLowerCase() === "admin") {
       console.log("Returning Full data");
       // Fetch all user documents with populated courses
       const allUsers = await User.find().select("-token -password");
