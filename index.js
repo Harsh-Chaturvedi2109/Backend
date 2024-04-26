@@ -12,7 +12,16 @@ const server = express();
 server.use(express.json({limit:"10mb"}))
 server.use(express.urlencoded({limit:"10mb",extended:true}))
 server.use(express.static('public'));
-server.use(cors());
+
+const corsOptions = {
+  origin: '*', // Or specify allowed origins
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Add any methods you need
+  allowedHeaders: ['Content-Type', 'Authorization'], // Allowed request headers
+  exposedHeaders: ['Authorization'], // Headers that clients can access in the response
+};
+
+server.use(cors(corsOptions));
+
 server.use(morgan('default'));
 // Connecting to the Database
 
