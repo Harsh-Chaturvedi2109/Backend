@@ -14,10 +14,9 @@ server.use(express.urlencoded({limit:"10mb",extended:true}))
 server.use(express.static('public'));
 
 const corsOptions = {
-  origin: '*', // Or specify allowed origins
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Add any methods you need
-  allowedHeaders: ['Content-Type', 'Authorization'], // Allowed request headers
-  exposedHeaders: ['Authorization'], // Headers that clients can access in the response
+  origin: '*',
+  allowedHeaders: ['Content-Type', 'Authorization'], 
+  exposedHeaders: ['Authorization'], 
 };
 
 server.use(cors(corsOptions));
