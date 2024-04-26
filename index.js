@@ -19,7 +19,7 @@ server.use(morgan('default'));
 main().catch(err => console.log("Error", err));
 
 async function main() {
-  await mongoose.connect("mongodb+srv://harshchaturvedi2109:Harsh2109@samplecluster.iokns2i.mongodb.net/YourDatabaseName?retryWrites=true&w=majority&appName=SampleCluster");
+  await mongoose.connect(process.env.URI);
   console.log("Connected to the database");
 }
 /*
